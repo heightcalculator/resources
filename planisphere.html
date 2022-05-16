@@ -1,0 +1,21 @@
+<script>
+   window.onload = function() {
+   navigator.geolocation.getCurrentPosition(position => {
+   const rawlat= position.coords.latitude;
+   function fixLat(latitude){
+      var ah
+      if (latitude>=0){
+         ah="N";
+      }else {ah="S"}
+      latitude=Math.abs((((latitude/5).toFixed())*5))
+      console.log(latitude+ah)
+      const result=latitude+ah
+      return result
+   };
+   function redirect(abc){
+      window.location.href="https://planisphere.aarushmagic.com/pdfs/planisphere-"+abc+".pdf";
+      
+      window.close();
+   };
+      redirect(fixLat(rawlat))
+   })}</script>
